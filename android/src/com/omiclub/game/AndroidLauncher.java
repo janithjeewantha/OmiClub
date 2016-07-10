@@ -1,10 +1,10 @@
 package com.omiclub.game;
 
+import android.os.Build;
 import android.os.Bundle;
-
 import com.badlogic.gdx.backends.android.AndroidApplication;
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
-import com.omiclub.game.OmiClub;
+import com.omiclub.common.DimensionHandler;
 
 public class AndroidLauncher extends AndroidApplication {
 	@Override
@@ -14,6 +14,9 @@ public class AndroidLauncher extends AndroidApplication {
 		config.useAccelerometer = false;
 		config.useCompass = false;
 		config.useGyroscope = false;
+		config.hideStatusBar = true;
+		DimensionHandler.setDevice(Build.DEVICE);
+
 		initialize(new OmiClub(), config);
 	}
 }

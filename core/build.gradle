@@ -7,4 +7,5 @@ eclipse.project {
 }
 dependencies {
     compile project(':kryonet-2.21')
+    compile 'com.badlogicgames.gdx:gdx-backend-android:1.9.3'
 }

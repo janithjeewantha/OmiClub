@@ -1,12 +1,23 @@
 package com.omiclub.game;
 
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Preferences;
+import com.omiclub.common.DimensionHandler;
+import com.omiclub.common.GameData;
+import com.omiclub.common.ScreenHandler;
 
 public class OmiClub extends Game {
-	
-	@Override
+
+    @Override
 	public void create () {
-		SplashScreen splashScreen = new SplashScreen(this);
+
+		Preferences prefs = Gdx.app.getPreferences("prefs");
+
+		DimensionHandler.initGeometry();
+		GameData.setGameInstance(this);
+
+		SplashScreen splashScreen = (SplashScreen) ScreenHandler.getSplashScreen();
 		setScreen(splashScreen);
 	}
 
