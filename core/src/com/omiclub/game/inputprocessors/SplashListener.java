@@ -1,6 +1,6 @@
 package com.omiclub.game.inputprocessors;
 
-import com.badlogic.gdx.InputProcessor;
+import com.badlogic.gdx.InputAdapter;
 import com.omiclub.common.GameData;
 import com.omiclub.common.ScreenHandler;
 import com.omiclub.game.NameScreen;
@@ -8,7 +8,7 @@ import com.omiclub.game.NameScreen;
 /**
  * Created by janith on 7/10/16.
  */
-public class SplashListener implements InputProcessor{
+public class SplashListener extends InputAdapter{
 
     private static SplashListener splashListener;
 
@@ -23,44 +23,11 @@ public class SplashListener implements InputProcessor{
     }
 
     @Override
-    public boolean keyDown(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyUp(int keycode) {
-        return false;
-    }
-
-    @Override
-    public boolean keyTyped(char character) {
-        return false;
-    }
-
-    @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         NameScreen nameScreen = (NameScreen) ScreenHandler.getNameScreen();
         GameData.getGameInstance().setScreen(nameScreen);
-        return false;
+        ScreenHandler.getSplashScreen().dispose();
+        return true;
     }
 
-    @Override
-    public boolean touchUp(int screenX, int screenY, int pointer, int button) {
-        return false;
-    }
-
-    @Override
-    public boolean touchDragged(int screenX, int screenY, int pointer) {
-        return false;
-    }
-
-    @Override
-    public boolean mouseMoved(int screenX, int screenY) {
-        return false;
-    }
-
-    @Override
-    public boolean scrolled(int amount) {
-        return false;
-    }
 }

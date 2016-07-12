@@ -3,43 +3,50 @@ package com.omiclub.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.GlyphLayout;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.omiclub.common.DimensionHandler;
+import com.omiclub.common.FontsHandler;
+import com.omiclub.common.GraphicsLoader;
 import com.omiclub.game.inputprocessors.SplashListener;
+
+import java.util.Map;
 
 /**
  * Created by janith on 6/18/16.
  */
 public class SplashScreen implements Screen{
 
-    private TextureAtlas splashImage;
     private SpriteBatch spriteBatch;
     private Sprite background;
     private Sprite logo;
+    private GlyphLayout loadingLayout;
+    private float textX;
+    private float textY;
+    private BitmapFont font;
+    private boolean loaded = false;
+    private long currentTimeMillis;
 
     @Override
     public void show() {
-
         spriteBatch = new SpriteBatch();
-        splashImage = new TextureAtlas("essentials/essentials.pack");
+        Map<String, Sprite> loadingSprites = GraphicsLoader.getLoadingScreenBackground();
+        background = loadingSprites.get("background");
+        logo = loadingSprites.get("logo");
 
-        background = splashImage.createSprite("loading-background");
-        background.setBounds(0f, 0f, DimensionHandler.getScreenWidth(), DimensionHandler.getScreenHeight());
-
-        logo = splashImage.createSprite("Icon");
-        setBoundsOfLogo(logo);
-
-        Gdx.input.setInputProcessor(SplashListener.getInstance());
-
+        font = FontsHandler.getDefaultBitmapFont((int) DimensionHandler.getScreenHeight()/10);
+        loadingLayout = new GlyphLayout(font, "Loading...");
+        alignLoadingText();
+        currentTimeMillis = System.currentTimeMillis();
     }
 
-    private void setBoundsOfLogo(Sprite logo) {
-        logo.setSize((float) DimensionHandler.getScreenWidth()/2, (float) DimensionHandler.getScreenWidth()/2);
-        float logoCenterX = DimensionHandler.getScreenCenterX();
-        float logoCenterY = (float) DimensionHandler.getScreenHeight()/5f*3f;
-        logo.setCenter(logoCenterX, logoCenterY);
+    private void alignLoadingText() {
+        float halfWith = loadingLayout.width/2;
+        float halfHeight = loadingLayout.height/2;
+        textX = (DimensionHandler.getScreenWidth()/2) - halfWith;
+        textY = (DimensionHandler.getScreenHeight()/4) - halfHeight;
     }
 
     @Override
@@ -50,7 +57,16 @@ public class SplashScreen implements Screen{
         spriteBatch.begin();
         background.draw(spriteBatch);
         logo.draw(spriteBatch);
+        font.draw(spriteBatch, loadingLayout, textX, textY);
         spriteBatch.end();
+
+        if(!loaded & System.currentTimeMillis() > currentTimeMillis+5000){
+            GraphicsLoader.loadCards();
+            loadingLayout = new GlyphLayout(font, "Tap to Continue");
+            alignLoadingText();
+            Gdx.input.setInputProcessor(SplashListener.getInstance());
+            loaded = true;
+        }
     }
 
     @Override
@@ -75,6 +91,6 @@ public class SplashScreen implements Screen{
 
     @Override
     public void dispose() {
-
+        spriteBatch.dispose();
     }
 }
