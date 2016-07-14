@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
 import com.omiclub.common.ScreenHandler;
-import com.omiclub.game.inputprocessors.NullListener;
 
 import java.util.Map;
 
@@ -62,8 +61,7 @@ public class NameScreen implements Screen{
         MainMenu mainMenu = (MainMenu) ScreenHandler.getMainMenu();
         GameData.getGameInstance().setScreen(mainMenu);
 
-        Gdx.input.setInputProcessor(NullListener.getInstance());
-        this.dispose();
+        //this.dispose();
     }
 
     @Override

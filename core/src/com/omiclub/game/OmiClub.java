@@ -17,6 +17,8 @@ public class OmiClub extends Game {
 		DimensionHandler.initGeometry();
 		GameData.setGameInstance(this);
 
+		Gdx.input.setCatchBackKey(true);
+
 		SplashScreen splashScreen = (SplashScreen) ScreenHandler.getSplashScreen();
 		setScreen(splashScreen);
 	}

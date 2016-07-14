@@ -24,7 +24,7 @@ public class FontsHandler {
         loadFonts();
         FreeTypeFontParameter parameter = new FreeTypeFontParameter();
         float color = (float) 210/255f;
-        parameter.color = new Color(color, color, color, 1f);
+        parameter.color = new Color(color, color, color, 0.9f);
         parameter.borderColor = Color.BLACK;
         parameter.borderWidth = 5;
         return parameter;

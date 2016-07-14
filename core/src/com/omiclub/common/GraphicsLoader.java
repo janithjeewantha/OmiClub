@@ -2,9 +2,10 @@ package com.omiclub.common;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -14,15 +15,18 @@ public class GraphicsLoader {
 
     private static TextureAtlas essentialsAtlas;
     private static TextureAtlas cardsAtlas;
+    private static TextureAtlas buttonAtlas;
     private static Sprite background;
     private static Sprite logo;
     private static Map<String, Sprite> loadingScreenSprites = new HashMap<String, Sprite>();
+    private static Map<String, ImageButton> buttonMap = new HashMap<String, ImageButton>();
     private static Card[][] cards;
     private static Sprite backCard;
 
     private static void loadEssentialsPack(){
         if(essentialsAtlas == null) {
             essentialsAtlas = new TextureAtlas("essentials/essentials.pack");
+            buttonAtlas = new TextureAtlas("essentials/buttons.pack");
         }
     }
 
@@ -52,9 +56,9 @@ public class GraphicsLoader {
 
     private static void setLoadingScreen(){
         background.setBounds(0f, 0f, DimensionHandler.getScreenWidth(), DimensionHandler.getScreenHeight());
-        logo.setSize((float) DimensionHandler.getScreenWidth()/2, (float) DimensionHandler.getScreenWidth()/2);
+        logo.setSize(DimensionHandler.getScreenWidth()/2, DimensionHandler.getScreenWidth()/2);
         float logoCenterX = DimensionHandler.getScreenCenterX();
-        float logoCenterY = (float) DimensionHandler.getScreenHeight()/5f*3f;
+        float logoCenterY = DimensionHandler.getScreenHeight()/5f*3f;
         logo.setCenter(logoCenterX, logoCenterY);
     }
 
@@ -72,4 +76,27 @@ public class GraphicsLoader {
         return backCard;
     }
 
+    public static Map<String, ImageButton> getButtons(){
+        if(!buttonMap.isEmpty()){
+            return buttonMap;
+        }
+
+        buttonMap.put("hostBtn", new ImageButton(
+                new SpriteDrawable(buttonAtlas.createSprite("Host_N")),
+                new SpriteDrawable(buttonAtlas.createSprite("Host_P"))));
+        buttonMap.put("joinBtn", new ImageButton(
+                new SpriteDrawable(buttonAtlas.createSprite("Join_N")),
+                new SpriteDrawable(buttonAtlas.createSprite("Join_P"))));
+        buttonMap.put("exitBtn", new ImageButton(
+                new SpriteDrawable(buttonAtlas.createSprite("Exit_N")),
+                new SpriteDrawable(buttonAtlas.createSprite("Exit_P"))));
+        buttonMap.put("aboutBtn", new ImageButton(
+                new SpriteDrawable(buttonAtlas.createSprite("About_N")),
+                new SpriteDrawable(buttonAtlas.createSprite("About_P"))));
+        buttonMap.put("settingsBtn", new ImageButton(
+                new SpriteDrawable(buttonAtlas.createSprite("Sett_N")),
+                new SpriteDrawable(buttonAtlas.createSprite("Sett_P"))));
+
+        return buttonMap;
+    }
 }
