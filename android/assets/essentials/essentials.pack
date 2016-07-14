@@ -1,0 +1,99 @@
+
+essentials.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+bottom-bar
+  rotate: false
+  xy: 1, 907
+  size: 960, 100
+  orig: 960, 100
+  offset: 0, 0
+  index: -1
+top-bar
+  rotate: false
+  xy: 1, 805
+  size: 960, 100
+  orig: 960, 100
+  offset: 0, 0
+  index: -1
+green-back
+  rotate: false
+  xy: 1, 553
+  size: 400, 250
+  orig: 400, 250
+  offset: 0, 0
+  index: -1
+diamonds
+  rotate: false
+  xy: 403, 403
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+left-bar
+  rotate: false
+  xy: 805, 203
+  size: 100, 600
+  orig: 100, 600
+  offset: 0, 0
+  index: -1
+right-bar
+  rotate: false
+  xy: 907, 203
+  size: 100, 600
+  orig: 100, 600
+  offset: 0, 0
+  index: -1
+clubs
+  rotate: false
+  xy: 1, 151
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+spades
+  rotate: false
+  xy: 403, 1
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+
+essentials2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+loading-background
+  rotate: false
+  xy: 1, 403
+  size: 1001, 573
+  orig: 1001, 573
+  offset: 0, 0
+  index: -1
+hearts
+  rotate: false
+  xy: 1, 1
+  size: 400, 400
+  orig: 400, 400
+  offset: 0, 0
+  index: -1
+
+essentials3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Icon-shaded
+  rotate: false
+  xy: 1, 1
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+Icon
+  rotate: false
+  xy: 503, 1
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1

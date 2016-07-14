@@ -1,0 +1,75 @@
+
+buttons.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Host_N
+  rotate: false
+  xy: 1, 793
+  size: 800, 120
+  orig: 800, 120
+  offset: 0, 0
+  index: -1
+Join_N
+  rotate: false
+  xy: 1, 671
+  size: 800, 120
+  orig: 800, 120
+  offset: 0, 0
+  index: -1
+Join_P
+  rotate: false
+  xy: 1, 549
+  size: 800, 120
+  orig: 800, 120
+  offset: 0, 0
+  index: -1
+Host_P
+  rotate: false
+  xy: 1, 427
+  size: 800, 120
+  orig: 800, 120
+  offset: 0, 0
+  index: -1
+Sett_N
+  rotate: false
+  xy: 1, 285
+  size: 500, 140
+  orig: 500, 140
+  offset: 0, 0
+  index: -1
+About_N
+  rotate: false
+  xy: 1, 143
+  size: 500, 140
+  orig: 500, 140
+  offset: 0, 0
+  index: -1
+Sett_P
+  rotate: false
+  xy: 1, 1
+  size: 500, 140
+  orig: 500, 140
+  offset: 0, 0
+  index: -1
+About_P
+  rotate: false
+  xy: 503, 285
+  size: 500, 140
+  orig: 500, 140
+  offset: 0, 0
+  index: -1
+Exit_N
+  rotate: false
+  xy: 503, 163
+  size: 400, 120
+  orig: 400, 120
+  offset: 0, 0
+  index: -1
+Exit_P
+  rotate: false
+  xy: 503, 41
+  size: 400, 120
+  orig: 400, 120
+  offset: 0, 0
+  index: -1

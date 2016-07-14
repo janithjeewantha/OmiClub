@@ -1,0 +1,261 @@
+
+cards.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+7_of_spades
+  rotate: false
+  xy: 1, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+10_of_diamonds
+  rotate: false
+  xy: 1, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+8_of_hearts
+  rotate: false
+  xy: 338, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+ace_of_clubs
+  rotate: false
+  xy: 338, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+king_of_spades
+  rotate: false
+  xy: 675, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+7_of_hearts
+  rotate: false
+  xy: 675, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+
+cards2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+jack_of_spades
+  rotate: false
+  xy: 1, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+jack_of_clubs
+  rotate: false
+  xy: 1, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+back
+  rotate: false
+  xy: 338, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+queen_of_spades
+  rotate: false
+  xy: 338, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+ace_of_spades
+  rotate: false
+  xy: 675, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+10_of_hearts
+  rotate: false
+  xy: 675, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+
+cards3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+8_of_clubs
+  rotate: false
+  xy: 1, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+7_of_diamonds
+  rotate: false
+  xy: 1, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+9_of_spades
+  rotate: false
+  xy: 338, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+8_of_spades
+  rotate: false
+  xy: 338, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+king_of_clubs
+  rotate: false
+  xy: 675, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+9_of_hearts
+  rotate: false
+  xy: 675, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+
+cards4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+queen_of_hearts
+  rotate: false
+  xy: 1, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+10_of_spades
+  rotate: false
+  xy: 1, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+8_of_diamonds
+  rotate: false
+  xy: 338, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+9_of_clubs
+  rotate: false
+  xy: 338, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+queen_of_clubs
+  rotate: false
+  xy: 675, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+10_of_clubs
+  rotate: false
+  xy: 675, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+
+cards5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+king_of_diamonds
+  rotate: false
+  xy: 1, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+ace_of_hearts
+  rotate: false
+  xy: 1, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+7_of_clubs
+  rotate: false
+  xy: 338, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+king_of_hearts
+  rotate: false
+  xy: 338, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+9_of_diamonds
+  rotate: false
+  xy: 675, 489
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+ace_of_diamonds
+  rotate: false
+  xy: 675, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+
+cards6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+jack_of_hearts
+  rotate: false
+  xy: 1, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+jack_of_diamonds
+  rotate: false
+  xy: 338, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
+queen_of_diamonds
+  rotate: false
+  xy: 675, 1
+  size: 335, 486
+  orig: 335, 486
+  offset: 0, 0
+  index: -1
