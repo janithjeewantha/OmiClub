@@ -3,22 +3,26 @@ package com.omiclub.network;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.omiclub.common.players.Client;
 import com.omiclub.messaging.Handler;
 import com.omiclub.messaging.ServerMessageHandler;
 import com.omiclub.messaging.messages.GeneralMessage;
 import com.omiclub.messaging.messages.Message;
 import com.omiclub.messaging.messages.MessageCodes;
 import com.omiclub.messaging.messages.PlayerBroadcast;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
 /**
  * Created by janith on 6/18/16.
  */
-public class Server {
+public class Server{
 
     private static Server serverInstance;
-    private int MAX_CLIENTS = 3;
+    private int MAX_CLIENTS = 1;
+    private final int PORT_TCP = 54555;
+    private final int PORT_UDP = 54777;
     private com.esotericsoftware.kryonet.Server server;
     private Listener listener;
     private ArrayList<Connection> clients;
@@ -32,7 +36,6 @@ public class Server {
         server = new com.esotericsoftware.kryonet.Server();
         clients = new ArrayList<Connection>();
         handler = new ServerMessageHandler(this);
-        initListener();
     }
 
     public static Server getServer(String serverName){
@@ -46,7 +49,7 @@ public class Server {
         server.start();
         //System.out.println("Starting Server...");
         try {
-            server.bind(54555, 54777);
+            server.bind(PORT_TCP, PORT_UDP);
             //System.out.println("Server Bound to Port");
         } catch (IOException ex) {
             //System.out.println("Bind Error: " + ex.getMessage());
@@ -55,41 +58,11 @@ public class Server {
 
         kryo = server.getKryo();
         kryo.register(GeneralMessage.class);
+        kryo.register(Message.class);
         kryo.register(MessageCodes.class);
-        server.addListener(listener);
-
+        kryo.register(PlayerBroadcast.class);
+        server.addListener(new ServerListener());
         return true;
-    }
-
-    private void initListener() {
-        listener = new Listener(){
-            @Override
-            public void received(Connection connection, Object object) {
-                System.out.println("Packet Received: " + object.toString());
-                handler.handle(connection, object);
-            }
-
-            @Override
-            public void disconnected(Connection connection) {
-                super.disconnected(connection);
-                System.out.println("Client Disconnected:" + connection);
-            }
-
-            @Override
-            public void connected(Connection connection) {
-                if(serverIsFull){
-                    connection.sendTCP(new GeneralMessage(MessageCodes.SERVER_FULL));
-                    return;
-                }
-                clients.add(connection);
-                if(clients.size() == MAX_CLIENTS){
-                    serverIsFull = true;
-                    //Send IDs & names to everyone
-                    broadcastPlayers();
-
-                }
-            }
-        };
     }
 
     private void broadcastPlayers() {

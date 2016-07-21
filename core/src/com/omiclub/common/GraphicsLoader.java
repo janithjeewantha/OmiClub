@@ -18,6 +18,8 @@ public class GraphicsLoader {
     private static TextureAtlas buttonAtlas;
     private static Sprite background;
     private static Sprite logo;
+    private static Sprite logo_faded;
+    private static Sprite tint;
     private static Map<String, Sprite> loadingScreenSprites = new HashMap<String, Sprite>();
     private static Map<String, ImageButton> buttonMap = new HashMap<String, ImageButton>();
     private static Card[][] cards;
@@ -44,14 +46,39 @@ public class GraphicsLoader {
         if(logo == null){
             logo = essentialsAtlas.createSprite("Icon");
         }
+        if(logo_faded == null){
+            logo_faded = essentialsAtlas.createSprite("Icon-shaded");
+        }
     }
 
     public static Map<String, Sprite> getLoadingScreenBackground(){
         loadSplashImages();
         setLoadingScreen();
+        loadingScreenSprites.clear();
         loadingScreenSprites.put("background", background);
         loadingScreenSprites.put("logo", logo);
         return loadingScreenSprites;
+    }
+
+    public static Map<String, Sprite> getCommonBackground(){
+        loadSplashImages();
+        setCommonScreen();
+        loadingScreenSprites.clear();
+        loadingScreenSprites.put("background", background);
+        loadingScreenSprites.put("logo_faded", logo_faded);
+        return loadingScreenSprites;
+    }
+
+    private static void setCommonScreen() {
+        background.setBounds(0f, 0f, DimensionHandler.getScreenWidth(), DimensionHandler.getScreenHeight());
+        logo_faded.setSize(DimensionHandler.getScreenWidth()/2, DimensionHandler.getScreenWidth()/2);
+        logo_faded.setCenter(DimensionHandler.getScreenCenterX(), DimensionHandler.getScreenCenterY());
+    }
+
+    public static Sprite getTint(){
+        tint = essentialsAtlas.createSprite("tint");
+        tint.setSize(DimensionHandler.getScreenWidth(), DimensionHandler.getScreenHeight());
+        return tint;
     }
 
     private static void setLoadingScreen(){

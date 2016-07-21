@@ -3,9 +3,16 @@ essentials.png
 format: RGBA8888
 filter: Nearest,Nearest
 repeat: none
+tint
+  rotate: false
+  xy: 1, 957
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
 bottom-bar
   rotate: false
-  xy: 1, 907
+  xy: 53, 907
   size: 960, 100
   orig: 960, 100
   offset: 0, 0

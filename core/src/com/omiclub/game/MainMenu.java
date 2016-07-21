@@ -6,14 +6,14 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
-import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.omiclub.common.DimensionHandler;
+import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
+import com.omiclub.common.ScreenHandler;
 
 import java.util.Map;
 
@@ -33,7 +33,6 @@ public class MainMenu implements Screen {
     private ImageButton aboutButton;
     private ImageButton settButton;
     private Stage stage;
-    private TextureAtlas buttonAtlas;
 
     @Override
     public void show() {
@@ -95,7 +94,8 @@ public class MainMenu implements Screen {
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("Host Touch Up");
+                ServerScreen serverScreen = (ServerScreen) ScreenHandler.getServerScreen();
+                GameData.getGameInstance().setScreen(serverScreen);
                 super.touchUp(event, x, y, pointer, button);
             }
         });

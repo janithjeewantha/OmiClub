@@ -3,6 +3,8 @@ package com.omiclub.common;
 import com.badlogic.gdx.Screen;
 import com.omiclub.game.MainMenu;
 import com.omiclub.game.NameScreen;
+import com.omiclub.game.PlayerSelector;
+import com.omiclub.game.ServerScreen;
 import com.omiclub.game.SplashScreen;
 
 import java.util.HashMap;
@@ -34,5 +36,19 @@ public class ScreenHandler {
             screens.put("mainmenu", new MainMenu());
         }
         return screens.get("mainmenu");
+    }
+
+    public static Screen getServerScreen(){
+        if(!screens.containsKey("serverscreen")){
+            screens.put("serverscreen", new ServerScreen());
+        }
+        return screens.get("serverscreen");
+    }
+
+    public static Screen getPlayerSelector() {
+        if(!screens.containsKey("playerselect")){
+            screens.put("playerselect", new PlayerSelector());
+        }
+        return screens.get("playerselect");
     }
 }

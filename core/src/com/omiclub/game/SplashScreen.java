@@ -11,7 +11,6 @@ import com.omiclub.common.DimensionHandler;
 import com.omiclub.common.FontsHandler;
 import com.omiclub.common.GraphicsLoader;
 import com.omiclub.game.inputprocessors.SplashListener;
-
 import java.util.Map;
 
 /**
@@ -36,7 +35,7 @@ public class SplashScreen implements Screen{
         background = loadingSprites.get("background");
         logo = loadingSprites.get("logo");
 
-        font = FontsHandler.getDefaultBitmapFont((int) DimensionHandler.getScreenHeight()/20);
+        font = FontsHandler.getDefaultBitmapFont((int) DimensionHandler.getScreenHeight()/13);
         loadingLayout = new GlyphLayout(font, "Loading...");
         alignLoadingText();
         currentTimeMillis = System.currentTimeMillis();
