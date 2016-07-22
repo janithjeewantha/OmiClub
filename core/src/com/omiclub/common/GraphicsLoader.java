@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,7 +23,7 @@ public class GraphicsLoader {
     private static Sprite tint;
     private static Map<String, Sprite> loadingScreenSprites = new HashMap<String, Sprite>();
     private static Map<String, ImageButton> buttonMap = new HashMap<String, ImageButton>();
-    private static Card[][] cards;
+    private static ArrayList<Card> cards;
     private static Sprite backCard;
 
     private static void loadEssentialsPack(){
@@ -95,7 +96,7 @@ public class GraphicsLoader {
         backCard = cardsAtlas.createSprite("back");
     }
 
-    public static Card[][] getCards(){
+    public static ArrayList<Card> getCards(){
         return cards;
     }
 

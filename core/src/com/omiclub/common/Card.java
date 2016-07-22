@@ -1,6 +1,7 @@
 package com.omiclub.common;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 
 /**
  * Created by janith on 7/12/16.
@@ -9,14 +10,14 @@ public class Card {
 
     public int suit;
     public int value;
-    public Sprite card;
+    public Image card;
 
     private Card(int suit, int value){
         this.suit = suit;
         this.value = value;
     }
 
-    public Card(int suit, int value, Sprite card) {
+    public Card(int suit, int value, Image card) {
         this.suit = suit;
         this.value = value;
         this.card = card;
@@ -38,15 +39,15 @@ public class Card {
         this.value = value;
     }
 
-    public Sprite getCard() {
+    public Image getCard() {
         return card;
     }
 
-    public void setCard(Sprite card) {
+    public void setCard(Image card) {
         this.card = card;
     }
 
-    public static Card getDummyCard(int suit, int value){
+    public Card getDummyCard(){
         return new Card(suit, value);
     }
 

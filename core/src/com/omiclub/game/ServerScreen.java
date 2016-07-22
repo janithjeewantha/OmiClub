@@ -71,7 +71,7 @@ public class ServerScreen implements Screen {
             GameData.setIsHost(true);
         }
 
-        if (GameData.isPlayersReady() & System.currentTimeMillis() > time+5000){
+        if (GameData.isPlayersReady() & System.currentTimeMillis() > time+3000){
             GameData.getGameInstance().setScreen(ScreenHandler.getPlayerSelector());
         }
 

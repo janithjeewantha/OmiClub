@@ -19,6 +19,7 @@ import com.omiclub.common.FontsHandler;
 import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
 import com.omiclub.common.ScreenHandler;
+import com.omiclub.common.game.Game;
 import com.omiclub.common.players.Client;
 
 import java.util.ArrayList;
@@ -42,8 +43,8 @@ public class PlayerSelector implements Screen{
     private float textX;
     private float textY;
     private Batch spriteBatch;
-    private int firendid = -1;
     private Stage stage;
+    private boolean friendSelected = false;
 
     @Override
     public void show() {
@@ -82,6 +83,14 @@ public class PlayerSelector implements Screen{
         spriteBatch.end();
 
         stage.draw();
+
+        if(friendSelected){
+            goToTrumpsSelector();
+        }
+    }
+
+    private void goToTrumpsSelector() {
+        GameData.startNewGame();
     }
 
     private void setLabels() {
@@ -103,7 +112,8 @@ public class PlayerSelector implements Screen{
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
                 GameData.setFriendID(client.getId());
-                GameData.setFriendID(0);
+                friendSelected = true;
+//                GameData.setFriendID(0);
                 super.touchUp(event, x, y, pointer, button);
             }
         });
@@ -123,6 +133,7 @@ public class PlayerSelector implements Screen{
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 //                GameData.setFriendID(client.getId());
                     GameData.setFriendID(1);
+                    friendSelected = true;
                     super.touchUp(event, x, y, pointer, button);
                 }
             });
@@ -142,6 +153,7 @@ public class PlayerSelector implements Screen{
                 public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
 //                GameData.setFriendID(client.getId());
                     GameData.setFriendID(2);
+                    friendSelected = true;
                     super.touchUp(event, x, y, pointer, button);
                 }
             });

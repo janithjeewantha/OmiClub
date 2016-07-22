@@ -59,7 +59,7 @@ public class SplashScreen implements Screen{
         font.draw(spriteBatch, loadingLayout, textX, textY);
         spriteBatch.end();
 
-        if(!loaded & System.currentTimeMillis() > currentTimeMillis+2000){
+        if(!loaded){
             GraphicsLoader.loadCards();
             loadingLayout = new GlyphLayout(font, "Tap to Continue");
             alignLoadingText();

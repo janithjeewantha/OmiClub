@@ -2,7 +2,6 @@ package com.omiclub.common;
 
 import com.badlogic.gdx.Game;
 import com.omiclub.common.players.Client;
-
 import java.util.ArrayList;
 
 /**
@@ -17,6 +16,7 @@ public class GameData {
     private static ArrayList<Client> players = new ArrayList<Client>(3);
     private static boolean playersReady = false; ///////////SET TO FALSE AFTER TESTING/////////////
     private static int friendID = -1;
+    private static com.omiclub.common.game.Game currentGame;
 
     public static int getFriendID() {
         return friendID;
@@ -68,5 +68,9 @@ public class GameData {
 
     public static boolean isPlayersReady() {
         return playersReady;
+    }
+
+    public static void startNewGame() {
+        currentGame = new com.omiclub.common.game.Game();
     }
 }

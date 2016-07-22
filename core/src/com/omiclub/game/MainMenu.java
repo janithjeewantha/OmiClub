@@ -27,11 +27,6 @@ public class MainMenu implements Screen {
     private SpriteBatch spriteBatch;
     private Sprite background;
     private Sprite logo;
-    private ImageButton hostButton;
-    private ImageButton joinButton;
-    private ImageButton exitButton;
-    private ImageButton aboutButton;
-    private ImageButton settButton;
     private Stage stage;
 
     @Override
@@ -78,6 +73,11 @@ public class MainMenu implements Screen {
 
     private void setupButtons() {
         buttons = GraphicsLoader.getButtons();
+        ImageButton hostButton;
+        ImageButton joinButton;
+        ImageButton exitButton;
+        ImageButton aboutButton;
+        ImageButton settButton;
 
         //Host Button
         float hostBtnHeight = DimensionHandler.getScreenWidth()*0.06f;
