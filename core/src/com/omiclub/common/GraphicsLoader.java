@@ -2,9 +2,9 @@ package com.omiclub.common;
 
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
 import com.badlogic.gdx.scenes.scene2d.utils.SpriteDrawable;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,6 +23,7 @@ public class GraphicsLoader {
     private static Sprite tint;
     private static Map<String, Sprite> loadingScreenSprites = new HashMap<String, Sprite>();
     private static Map<String, ImageButton> buttonMap = new HashMap<String, ImageButton>();
+    private static Map<Integer, Image> suitsMap = new HashMap<Integer, Image>();
     private static ArrayList<Card> cards;
     private static Sprite backCard;
 
@@ -68,6 +69,17 @@ public class GraphicsLoader {
         loadingScreenSprites.put("background", background);
         loadingScreenSprites.put("logo_faded", logo_faded);
         return loadingScreenSprites;
+    }
+
+    public static Map<Integer, Image> getSuits(){
+        if(!suitsMap.isEmpty()){
+            return suitsMap;
+        }
+        suitsMap.put(Suit.HEARTS, new Image(essentialsAtlas.findRegion("hearts")));
+        suitsMap.put(Suit.SPADES, new Image(essentialsAtlas.findRegion("spades")));
+        suitsMap.put(Suit.DIAMONDS, new Image(essentialsAtlas.findRegion("diamonds")));
+        suitsMap.put(Suit.CLUBS, new Image(essentialsAtlas.findRegion("clubs")));
+        return suitsMap;
     }
 
     private static void setCommonScreen() {

@@ -11,6 +11,7 @@ public class GameData {
 
     private static String device;
     private static Game gameInstance;
+    public static final int MAX_CLIENTS = 1;
     private static String playerName;
     private static boolean isHost;
     private static ArrayList<Client> players = new ArrayList<Client>(3);
@@ -72,5 +73,9 @@ public class GameData {
 
     public static void startNewGame() {
         currentGame = new com.omiclub.common.game.Game();
+    }
+
+    public static com.omiclub.common.game.Game getCurrentGame() {
+        return currentGame;
     }
 }

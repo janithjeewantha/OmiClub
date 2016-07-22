@@ -11,4 +11,5 @@ public class MessageCodes {
     public static final int SERVER_FULL = 4;
     public static final int SERVER_DISCONNECTING = 5;
     public static final int PLAYER_BROADCAST = 6;
+    public static final int HAND_DISTRIBUTION = 7;
 }

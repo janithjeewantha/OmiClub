@@ -3,14 +3,15 @@ package com.omiclub.network;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.omiclub.common.GameData;
 import com.omiclub.common.players.Client;
 import com.omiclub.messaging.Handler;
 import com.omiclub.messaging.ServerMessageHandler;
 import com.omiclub.messaging.messages.GeneralMessage;
+import com.omiclub.messaging.messages.HandDistribution;
 import com.omiclub.messaging.messages.Message;
 import com.omiclub.messaging.messages.MessageCodes;
 import com.omiclub.messaging.messages.PlayerBroadcast;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ import java.util.ArrayList;
 public class Server{
 
     private static Server serverInstance;
-    private int MAX_CLIENTS = 1;
+    private int MAX_CLIENTS = GameData.MAX_CLIENTS;
     private final int PORT_TCP = 54555;
     private final int PORT_UDP = 54777;
     private com.esotericsoftware.kryonet.Server server;
@@ -45,6 +46,10 @@ public class Server{
         return serverInstance;
     }
 
+    public static Server getServerInstance(){
+        return serverInstance;
+    }
+
     public boolean startServer(){
         server.start();
         //System.out.println("Starting Server...");
@@ -61,6 +66,7 @@ public class Server{
         kryo.register(Message.class);
         kryo.register(MessageCodes.class);
         kryo.register(PlayerBroadcast.class);
+        kryo.register(HandDistribution.class);
         server.addListener(new ServerListener());
         return true;
     }
@@ -79,6 +85,10 @@ public class Server{
 
         Message broadcast = new PlayerBroadcast(ids, names);
         server.sendToAllTCP(broadcast);
+    }
+
+    public void sendCards(int playerID, int[] suit, int[] value, int nextLeaderID){
+        server.sendToTCP(playerID, new HandDistribution(nextLeaderID, suit, value));
     }
 
     public void stopServer(){

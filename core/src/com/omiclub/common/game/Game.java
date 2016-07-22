@@ -3,8 +3,8 @@ package com.omiclub.common.game;
 import com.omiclub.common.Card;
 import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
+import com.omiclub.common.ScreenHandler;
 import com.omiclub.common.players.Client;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,13 +38,34 @@ public class Game {
             }
         }
         currentMatch = new Match(this);
+
+        GameData.getGameInstance().setScreen(ScreenHandler.getTrumpSelectScreen());
     }
 
     public ArrayList<Card> getCards() {
         return cards;
     }
 
+    public Map<Integer, Integer> getPlayerOrder() {
+        return playerOrder;
+    }
+
     public ArrayList<Card> getDummyCards() {
         return dummyCards;
+    }
+
+    public int getNextLeaderId() {
+        return nextLeaderId;
+    }
+
+    public Match getCurrentMatch() {
+        return currentMatch;
+    }
+
+    public void rotateNextLeaderId(){
+        ++nextLeaderId;
+        if (nextLeaderId > GameData.MAX_CLIENTS){
+            nextLeaderId = 0;
+        }
     }
 }

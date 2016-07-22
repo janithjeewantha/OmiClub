@@ -1,7 +1,6 @@
 package com.omiclub.game;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Batch;
@@ -14,14 +13,14 @@ import com.omiclub.common.FontsHandler;
 import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
 import com.omiclub.common.ScreenHandler;
-import com.omiclub.network.Server;
+import com.omiclub.network.CommonData;
 
 import java.util.Map;
 
 /**
- * Created by janith on 7/21/16.
+ * Created by janith on 7/22/16.
  */
-public class ServerScreen implements Screen {
+public class TrumpWaitScreen implements Screen {
 
     private Sprite background;
     private Sprite logo;
@@ -31,8 +30,6 @@ public class ServerScreen implements Screen {
     private float textY;
     private Batch spriteBatch;
     private BitmapFont font;
-    private Server server;
-    private final long time = System.currentTimeMillis();
 
     @Override
     public void show() {
@@ -41,7 +38,8 @@ public class ServerScreen implements Screen {
         logo = loadingSprites.get("logo_faded");
         tint = GraphicsLoader.getTint();
         font = FontsHandler.getDefaultBitmapFont((int) (DimensionHandler.getScreenHeight() / 20));
-        text = new GlyphLayout(font, "Waiting for Players...");
+        String trumpSelector = CommonData.getPlayerName(CommonData.getLeaderID());
+        text = new GlyphLayout(font, "Waiting for " + trumpSelector + " to choose trumps");
         alignText();
         spriteBatch = new SpriteBatch();
     }
@@ -65,26 +63,8 @@ public class ServerScreen implements Screen {
         font.draw(spriteBatch, text, textX, textY);
         spriteBatch.end();
 
-        if(!GameData.isHost()){
-            server = Server.getServer(GameData.getPlayerName());
-            server.startServer();
-            GameData.setIsHost(true);
-        }
-
-        if (GameData.isPlayersReady() & System.currentTimeMillis() > time+3000){
-            GameData.getGameInstance().setScreen(ScreenHandler.getPlayerSelector());
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.BACK)){
-            if (server != null){
-                server.stopServer();
-                GameData.setIsHost(false);
-            }
-            if (GameData.getPlayers() != null){
-                GameData.getPlayers().clear();
-            }
-            GameData.setPlayersReady(false);
-            GameData.getGameInstance().setScreen((MainMenu) ScreenHandler.getMainMenu());
+        if(CommonData.isTrumpsChosen()){
+            GameData.getGameInstance().setScreen(ScreenHandler.getGameScreen());
         }
     }
 
