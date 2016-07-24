@@ -26,7 +26,7 @@ public class FontsHandler {
         float color = (float) 210/255f;
         parameter.color = new Color(color, color, color, 1f);
         parameter.borderColor = Color.BLACK;
-        parameter.borderWidth = 4;
+        parameter.borderWidth = 3;
         return parameter;
     }
 

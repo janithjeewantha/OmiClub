@@ -22,6 +22,7 @@ public class GraphicsLoader {
     private static Sprite logo_faded;
     private static Sprite tint;
     private static Map<String, Sprite> loadingScreenSprites = new HashMap<String, Sprite>();
+    private static Map<String, Sprite> boardSprites = new HashMap<String, Sprite>();
     private static Map<String, ImageButton> buttonMap = new HashMap<String, ImageButton>();
     private static Map<Integer, Image> suitsMap = new HashMap<Integer, Image>();
     private static ArrayList<Card> cards;
@@ -102,6 +103,47 @@ public class GraphicsLoader {
         logo.setCenter(logoCenterX, logoCenterY);
     }
 
+    public static Map<String, Sprite> getBoardBackground() {
+        Sprite background = essentialsAtlas.createSprite("green-back");
+        Sprite logo_faded = essentialsAtlas.createSprite("Icon-shaded");
+        Sprite left_bar = essentialsAtlas.createSprite("left-bar");
+        Sprite right_bar = essentialsAtlas.createSprite("right-bar");
+        Sprite top_bar = essentialsAtlas.createSprite("top-bar");
+        Sprite bottom_bar = essentialsAtlas.createSprite("bottom-bar");
+
+        boardSprites.clear();
+        boardSprites.put("background", background);
+        boardSprites.put("logo_faded", logo_faded);
+        boardSprites.put("left_bar", left_bar);
+        boardSprites.put("right_bar", right_bar);
+        boardSprites.put("top_bar", top_bar);
+        boardSprites.put("bottom_bar", bottom_bar);
+
+        alignBoard(boardSprites);
+        return boardSprites;
+    }
+
+    private static void alignBoard(Map<String, Sprite> boardSprites) {
+        boardSprites.get("background").setBounds(
+                0f, 0f, DimensionHandler.getScreenWidth(), DimensionHandler.getScreenHeight());
+        boardSprites.get("logo_faded").setSize(DimensionHandler.getScreenWidth()/2, DimensionHandler.getScreenWidth()/2);
+        boardSprites.get("logo_faded").setCenter(DimensionHandler.getScreenCenterX(), DimensionHandler.getScreenCenterY());
+
+        float barThickness = DimensionHandler.getScreenWidth()/20;
+        float barHeight = DimensionHandler.getScreenHeight();
+        float barWidth = DimensionHandler.getScreenWidth();
+
+        boardSprites.get("left_bar").setSize(barThickness, barHeight);
+        boardSprites.get("right_bar").setSize(barThickness, barHeight);
+        boardSprites.get("top_bar").setSize(barWidth, barThickness);
+        boardSprites.get("bottom_bar").setSize(barWidth, barThickness);
+
+        boardSprites.get("left_bar").setPosition(0, 0);
+        boardSprites.get("right_bar").setPosition((barWidth-barThickness), 0);
+        boardSprites.get("top_bar").setPosition(0, (barHeight-barThickness));
+        boardSprites.get("bottom_bar").setPosition(0, 0);
+    }
+
     public static void loadCards(){
         loadCardsPack();
         cards = CardsLoader.loadCards(cardsAtlas);
@@ -120,7 +162,9 @@ public class GraphicsLoader {
         if(!buttonMap.isEmpty()){
             return buttonMap;
         }
-
+        buttonMap.put("singleBtn", new ImageButton(
+                new SpriteDrawable(buttonAtlas.createSprite("Single_N")),
+                new SpriteDrawable(buttonAtlas.createSprite("Single_P"))));
         buttonMap.put("hostBtn", new ImageButton(
                 new SpriteDrawable(buttonAtlas.createSprite("Host_N")),
                 new SpriteDrawable(buttonAtlas.createSprite("Host_P"))));

@@ -6,11 +6,11 @@ import com.badlogic.gdx.scenes.scene2d.ui.Image;
 /**
  * Created by janith on 7/12/16.
  */
-public class Card {
+public class Card implements Comparable<Card>{
 
-    public int suit;
-    public int value;
-    public Image card;
+    private int suit;
+    private int value;
+    private Image card;
 
     private Card(int suit, int value){
         this.suit = suit;
@@ -27,24 +27,12 @@ public class Card {
         return suit;
     }
 
-    public void setSuit(int suit) {
-        this.suit = suit;
-    }
-
     public int getValue() {
         return value;
     }
 
-    public void setValue(int value) {
-        this.value = value;
-    }
-
-    public Image getCard() {
+    public Image getImage() {
         return card;
-    }
-
-    public void setCard(Image card) {
-        this.card = card;
     }
 
     public Card getDummyCard(){
@@ -68,5 +56,10 @@ public class Card {
         int result = suit;
         result = 31 * result + value;
         return result;
+    }
+
+    @Override
+    public int compareTo(Card card) {
+        return this.value - card.getValue();
     }
 }

@@ -29,7 +29,8 @@ public class Client {
         Thread clientTread = new Thread(client);
         clientTread.start();
         handler = new ClientMsgHandler(this);
-        initListener();
+        listener = new ClientListener(this);
+        client.addListener(listener);
     }
 
     public static Client getClient(String clientName){
@@ -50,7 +51,7 @@ public class Client {
 
     public boolean connectToHost(){
         try {
-            client.connect(5000, host, 54555, 54777);
+            client.connect(10000, host, 54555, 54777);
             return true;
         } catch (IOException ex) {
             client.stop();
@@ -58,25 +59,13 @@ public class Client {
         }
     }
 
+    public boolean isConnected(){
+        return client.isConnected();
+    }
+
     private void sendName(){
         Message nameMessage = new GeneralMessage(MessageCodes.CLIENT_NAME, this.clientName);
         client.sendTCP(nameMessage);
-    }
-
-
-    private void initListener() {
-        listener = new Listener(){
-            @Override
-            public void received(Connection connection, Object object) {
-                handler.handle(connection, object);
-            }
-
-            @Override
-            public void disconnected(Connection connection) {
-                super.disconnected(connection);
-                /////////////////////
-            }
-        };
     }
 
     public void setID(int clientID){

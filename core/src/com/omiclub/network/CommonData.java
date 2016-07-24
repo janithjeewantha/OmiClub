@@ -9,9 +9,12 @@ public class CommonData {
     private static int[] ids;
     private static String[] names;
     private static int leaderID;
-    private static boolean trumpsChosen;
+    private static boolean playersReceived = false;
+    private static boolean cardsReceived = false;
+    private static boolean trumpsChosen = false;
     private static int trumps;
     private static Match.Hand hand;
+    private static boolean playersAquired;
 
     public static void setPlayers(int[] ids, String[] names){
         CommonData.ids = ids;
@@ -57,5 +60,13 @@ public class CommonData {
 
     public static void setHand(Match.Hand hand) {
         CommonData.hand = hand;
+    }
+
+    public static void setPlayersAquired(boolean playersAquired) {
+        CommonData.playersAquired = playersAquired;
+    }
+
+    public static boolean isPlayersAquired() {
+        return playersAquired;
     }
 }

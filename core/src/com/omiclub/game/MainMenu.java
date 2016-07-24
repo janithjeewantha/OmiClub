@@ -3,14 +3,18 @@ package com.omiclub.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Dialog;
 import com.badlogic.gdx.scenes.scene2d.ui.ImageButton;
+import com.badlogic.gdx.scenes.scene2d.ui.Window;
 import com.omiclub.common.DimensionHandler;
+import com.omiclub.common.FontsHandler;
 import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
 import com.omiclub.common.ScreenHandler;
@@ -73,11 +77,32 @@ public class MainMenu implements Screen {
 
     private void setupButtons() {
         buttons = GraphicsLoader.getButtons();
+        ImageButton singleButton;
         ImageButton hostButton;
         ImageButton joinButton;
         ImageButton exitButton;
         ImageButton aboutButton;
         ImageButton settButton;
+
+        //Single Button
+        float singleBtnHeight = DimensionHandler.getScreenWidth()*0.06f;
+        float singleBtnWidth = singleBtnHeight*20f/3;
+        float singleBtnX = DimensionHandler.getScreenWidth()*0.75f;
+        float singleBtnY = DimensionHandler.getScreenHeight()*0.65f;
+        singleButton = buttons.get("singleBtn");
+        singleButton.setSize(singleBtnWidth, singleBtnHeight);
+        singleButton.setPosition(singleBtnX-(singleBtnWidth/2), singleBtnY-(singleBtnHeight/2));
+        singleButton.addListener(new InputListener(){
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                return true;
+            }
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                GameData.getGameInstance().setScreen((GameScreen) ScreenHandler.getGameScreen());
+                super.touchUp(event, x, y, pointer, button);
+            }
+        });
 
         //Host Button
         float hostBtnHeight = DimensionHandler.getScreenWidth()*0.06f;
@@ -94,8 +119,9 @@ public class MainMenu implements Screen {
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                ServerScreen serverScreen = (ServerScreen) ScreenHandler.getServerScreen();
-                GameData.getGameInstance().setScreen(serverScreen);
+//                GameData.setIsHost(true);
+//                ServerScreen serverScreen = (ServerScreen) ScreenHandler.getServerScreen();
+//                GameData.getGameInstance().setScreen(serverScreen);
                 super.touchUp(event, x, y, pointer, button);
             }
         });
@@ -115,7 +141,9 @@ public class MainMenu implements Screen {
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("Join Touch Up");
+//                GameData.setIsHost(false);
+//                ClientScreen clientScreen = (ClientScreen) ScreenHandler.getClientScreen();
+//                GameData.getGameInstance().setScreen(clientScreen);
                 super.touchUp(event, x, y, pointer, button);
             }
         });
@@ -135,7 +163,7 @@ public class MainMenu implements Screen {
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("Exit Touch Up");
+                //System.out.println("Exit Touch Up");
                 Gdx.app.exit();
                 super.touchUp(event, x, y, pointer, button);
             }
@@ -156,7 +184,7 @@ public class MainMenu implements Screen {
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("About Touch Up");
+                //System.out.println("About Touch Up");
                 super.touchUp(event, x, y, pointer, button);
             }
         });
@@ -176,11 +204,12 @@ public class MainMenu implements Screen {
             }
             @Override
             public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
-                System.out.println("Settings Touch Up");
+                //System.out.println("Settings Touch Up");
                 super.touchUp(event, x, y, pointer, button);
             }
         });
 
+        stage.addActor(singleButton);
         stage.addActor(hostButton);
         stage.addActor(joinButton);
         stage.addActor(exitButton);

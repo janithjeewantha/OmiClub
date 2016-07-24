@@ -18,6 +18,7 @@ public class GameData {
     private static boolean playersReady = false; ///////////SET TO FALSE AFTER TESTING/////////////
     private static int friendID = -1;
     private static com.omiclub.common.game.Game currentGame;
+    private static int winner;
 
     public static int getFriendID() {
         return friendID;
@@ -77,5 +78,13 @@ public class GameData {
 
     public static com.omiclub.common.game.Game getCurrentGame() {
         return currentGame;
+    }
+
+    public static void setWinner(int winner) {
+        GameData.winner = winner;
+    }
+
+    public static int getWinner() {
+        return winner;
     }
 }

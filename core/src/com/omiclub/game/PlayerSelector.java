@@ -58,7 +58,7 @@ public class PlayerSelector implements Screen{
         textY = DimensionHandler.getScreenHeight()/6*5;
 
         playerFont = FontsHandler.getDefaultBitmapFont((int) (DimensionHandler.getScreenHeight() / 20));
-        style = new Label.LabelStyle(labelFont, Color.WHITE);
+        style = new Label.LabelStyle(playerFont, Color.WHITE);
         setLabels();
 
         spriteBatch = new SpriteBatch();

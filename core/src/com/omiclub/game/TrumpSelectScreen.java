@@ -18,6 +18,7 @@ import com.omiclub.common.GameData;
 import com.omiclub.common.GraphicsLoader;
 import com.omiclub.common.ScreenHandler;
 import com.omiclub.common.Suit;
+import com.omiclub.network.Client;
 import com.omiclub.network.CommonData;
 import java.util.Map;
 
@@ -93,8 +94,7 @@ public class TrumpSelectScreen implements Screen {
                 if(GameData.isHost()){
                     GameData.getCurrentGame().getCurrentMatch().setTrumps(Suit.HEARTS);
                 }
-                CommonData.setTrumps(Suit.HEARTS);
-                CommonData.setTrumpsChosen(true);
+                anounceTrumps(Suit.HEARTS);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -113,8 +113,7 @@ public class TrumpSelectScreen implements Screen {
                 if(GameData.isHost()){
                     GameData.getCurrentGame().getCurrentMatch().setTrumps(Suit.SPADES);
                 }
-                CommonData.setTrumps(Suit.SPADES);
-                CommonData.setTrumpsChosen(true);
+                anounceTrumps(Suit.SPADES);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -133,8 +132,7 @@ public class TrumpSelectScreen implements Screen {
                 if(GameData.isHost()){
                     GameData.getCurrentGame().getCurrentMatch().setTrumps(Suit.DIAMONDS);
                 }
-                CommonData.setTrumps(Suit.DIAMONDS);
-                CommonData.setTrumpsChosen(true);
+                anounceTrumps(Suit.DIAMONDS);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -153,8 +151,7 @@ public class TrumpSelectScreen implements Screen {
                 if(GameData.isHost()){
                     GameData.getCurrentGame().getCurrentMatch().setTrumps(Suit.CLUBS);
                 }
-                CommonData.setTrumps(Suit.CLUBS);
-                CommonData.setTrumpsChosen(true);
+                anounceTrumps(Suit.CLUBS);
                 super.touchUp(event, x, y, pointer, button);
             }
 
@@ -163,6 +160,11 @@ public class TrumpSelectScreen implements Screen {
                 return true;
             }
         });
+    }
+
+    private void anounceTrumps(int trumps) {
+        CommonData.setTrumps(trumps);
+        CommonData.setTrumpsChosen(true);
     }
 
     @Override

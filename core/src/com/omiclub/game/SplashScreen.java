@@ -35,7 +35,7 @@ public class SplashScreen implements Screen{
         background = loadingSprites.get("background");
         logo = loadingSprites.get("logo");
 
-        font = FontsHandler.getDefaultBitmapFont((int) DimensionHandler.getScreenHeight()/13);
+        font = FontsHandler.getDefaultBitmapFont((int) DimensionHandler.getScreenHeight()/15);
         loadingLayout = new GlyphLayout(font, "Loading...");
         alignLoadingText();
         currentTimeMillis = System.currentTimeMillis();
@@ -59,7 +59,7 @@ public class SplashScreen implements Screen{
         font.draw(spriteBatch, loadingLayout, textX, textY);
         spriteBatch.end();
 
-        if(!loaded){
+        if(!loaded && System.currentTimeMillis() > currentTimeMillis+2000){
             GraphicsLoader.loadCards();
             loadingLayout = new GlyphLayout(font, "Tap to Continue");
             alignLoadingText();

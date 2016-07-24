@@ -19,8 +19,6 @@ public class Match {
         Collections.shuffle(game.getDummyCards());
 
         distributeCards();
-
-
     }
 
     public void distributeCards(){

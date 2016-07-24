@@ -12,6 +12,8 @@ import java.util.ArrayList;
  */
 public class CardsLoader {
 
+    private static float cardWidth = DimensionHandler.getScreenWidth()/10;
+    private static float cardHeight = cardWidth*1.452f;
     private static ArrayList<Card> cards = new ArrayList<Card>(32);
     private static String[] cardNames = new String[]{
             "7_of_hearts",
@@ -56,9 +58,18 @@ public class CardsLoader {
         for (int suit = 0; suit < 4; suit++) {
             for (int i = 0; i < 8; i++) {
                 Image image = new Image(cardsAtlas.findRegion(cardNames[nameIndex++]));
+                image.setSize(cardWidth, cardHeight);
                 cards.add(new Card(suit, 7+i, image));
             }
         }
         return cards;
+    }
+
+    public static float getCardWidth() {
+        return cardWidth;
+    }
+
+    public static float getCardHeight() {
+        return cardHeight;
     }
 }

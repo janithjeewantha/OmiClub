@@ -1,10 +1,12 @@
 package com.omiclub.common;
 
 import com.badlogic.gdx.Screen;
+import com.omiclub.game.ClientScreen;
 import com.omiclub.game.GameScreen;
 import com.omiclub.game.MainMenu;
 import com.omiclub.game.NameScreen;
 import com.omiclub.game.PlayerSelector;
+import com.omiclub.game.ScoreScreen;
 import com.omiclub.game.ServerScreen;
 import com.omiclub.game.SplashScreen;
 import com.omiclub.game.TrumpSelectScreen;
@@ -66,5 +68,19 @@ public class ScreenHandler {
             screens.put("gamescreen", new GameScreen());
         }
         return screens.get("gamescreen");
+    }
+
+    public static Screen getClientScreen() {
+        if(!screens.containsKey("clientscreen")){
+            screens.put("clientscreen", new ClientScreen());
+        }
+        return screens.get("clientscreen");
+    }
+
+    public static Screen getScoreScreen() {
+        if(!screens.containsKey("scoreScreen")){
+            screens.put("scoreScreen", new ScoreScreen());
+        }
+        return screens.get("scoreScreen");
     }
 }

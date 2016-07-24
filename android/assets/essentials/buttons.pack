@@ -5,70 +5,89 @@ filter: Nearest,Nearest
 repeat: none
 Host_N
   rotate: false
-  xy: 1, 793
+  xy: 1, 895
   size: 800, 120
   orig: 800, 120
   offset: 0, 0
   index: -1
 Join_N
   rotate: false
-  xy: 1, 671
+  xy: 1, 773
+  size: 800, 120
+  orig: 800, 120
+  offset: 0, 0
+  index: -1
+Single_P
+  rotate: false
+  xy: 1, 651
+  size: 800, 120
+  orig: 800, 120
+  offset: 0, 0
+  index: -1
+Single_N
+  rotate: false
+  xy: 1, 529
   size: 800, 120
   orig: 800, 120
   offset: 0, 0
   index: -1
 Join_P
   rotate: false
-  xy: 1, 549
+  xy: 1, 407
   size: 800, 120
   orig: 800, 120
   offset: 0, 0
   index: -1
 Host_P
   rotate: false
-  xy: 1, 427
+  xy: 1, 285
   size: 800, 120
   orig: 800, 120
   offset: 0, 0
   index: -1
 Sett_N
   rotate: false
-  xy: 1, 285
+  xy: 1, 143
   size: 500, 140
   orig: 500, 140
   offset: 0, 0
   index: -1
 About_N
   rotate: false
-  xy: 1, 143
+  xy: 1, 1
   size: 500, 140
   orig: 500, 140
   offset: 0, 0
   index: -1
 Sett_P
   rotate: false
-  xy: 1, 1
+  xy: 503, 143
   size: 500, 140
   orig: 500, 140
   offset: 0, 0
   index: -1
 About_P
   rotate: false
-  xy: 503, 285
+  xy: 503, 1
   size: 500, 140
   orig: 500, 140
   offset: 0, 0
   index: -1
+
+buttons2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
 Exit_N
   rotate: false
-  xy: 503, 163
+  xy: 1, 1
   size: 400, 120
   orig: 400, 120
   offset: 0, 0
   index: -1
 Exit_P
   rotate: false
-  xy: 503, 41
+  xy: 403, 1
   size: 400, 120
   orig: 400, 120
   offset: 0, 0
