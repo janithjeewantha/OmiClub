@@ -116,7 +116,7 @@ public class GameLogic {
     public void cardDrawn(Card card) {
         if (draw == 3){
             currentDraw[draw] = card;
-            if (currentSuit == card.getSuit() && card.getValue() > currentHighestPlayer){
+            if (currentSuit == card.getSuit() && card.getValue() > currentHighestValue){
                 currentHighestPlayer = currentPlayer;
                 currentHighestValue = card.getValue();
             }
@@ -140,7 +140,7 @@ public class GameLogic {
                 isMyTurn = true;
             }
         }else if (draw < 3){
-            if (currentSuit == card.getSuit() && card.getValue() > currentHighestPlayer){
+            if (currentSuit == card.getSuit() && card.getValue() > currentHighestValue){
                 currentHighestPlayer = currentPlayer;
                 currentHighestValue = card.getValue();
             }
